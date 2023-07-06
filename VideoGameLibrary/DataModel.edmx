@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VideoGamesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ConsoleTypes">
+          <Key>
+            <PropertyRef Name="ConsoleTypeId" />
+          </Key>
+          <Property Name="ConsoleTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConsoleType" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Platforms">
+          <Key>
+            <PropertyRef Name="PlatformId" />
+          </Key>
+          <Property Name="PlatformId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlatformName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="25" />
+          <Property Name="ConsoleType" Type="nvarchar" MaxLength="15" />
+          <Property Name="ConsoleTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Platforms__Conso__5629CD9C">
+          <End Role="ConsoleTypes" Type="Self.ConsoleTypes" Multiplicity="1" />
+          <End Role="Platforms" Type="Self.Platforms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsoleTypes">
+              <PropertyRef Name="ConsoleTypeId" />
+            </Principal>
+            <Dependent Role="Platforms">
+              <PropertyRef Name="ConsoleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VideoGamesModelStoreContainer">
+          <EntitySet Name="ConsoleTypes" EntityType="Self.ConsoleTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Platforms" EntityType="Self.Platforms" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Platforms__Conso__5629CD9C" Association="Self.FK__Platforms__Conso__5629CD9C">
+            <End Role="ConsoleTypes" EntitySet="ConsoleTypes" />
+            <End Role="Platforms" EntitySet="Platforms" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VideoGamesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ConsoleType">
+          <Key>
+            <PropertyRef Name="ConsoleTypeId" />
+          </Key>
+          <Property Name="ConsoleTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsoleType1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Platforms" Relationship="Self.FK__Platforms__Conso__5629CD9C" FromRole="ConsoleTypes" ToRole="Platforms" />
+        </EntityType>
+        <EntityType Name="Platform">
+          <Key>
+            <PropertyRef Name="PlatformId" />
+          </Key>
+          <Property Name="PlatformId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlatformName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Brand" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ConsoleType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ConsoleTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ConsoleType1" Relationship="Self.FK__Platforms__Conso__5629CD9C" FromRole="Platforms" ToRole="ConsoleTypes" />
+        </EntityType>
+        <Association Name="FK__Platforms__Conso__5629CD9C">
+          <End Role="ConsoleTypes" Type="Self.ConsoleType" Multiplicity="1" />
+          <End Role="Platforms" Type="Self.Platform" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsoleTypes">
+              <PropertyRef Name="ConsoleTypeId" />
+            </Principal>
+            <Dependent Role="Platforms">
+              <PropertyRef Name="ConsoleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VideoGamesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ConsoleTypes" EntityType="Self.ConsoleType" />
+          <EntitySet Name="Platforms" EntityType="Self.Platform" />
+          <AssociationSet Name="FK__Platforms__Conso__5629CD9C" Association="Self.FK__Platforms__Conso__5629CD9C">
+            <End Role="ConsoleTypes" EntitySet="ConsoleTypes" />
+            <End Role="Platforms" EntitySet="Platforms" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VideoGamesModelStoreContainer" CdmEntityContainer="VideoGamesEntities">
+          <EntitySetMapping Name="ConsoleTypes">
+            <EntityTypeMapping TypeName="VideoGamesModel.ConsoleType">
+              <MappingFragment StoreEntitySet="ConsoleTypes">
+                <ScalarProperty Name="ConsoleTypeId" ColumnName="ConsoleTypeId" />
+                <ScalarProperty Name="ConsoleType1" ColumnName="ConsoleType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Platforms">
+            <EntityTypeMapping TypeName="VideoGamesModel.Platform">
+              <MappingFragment StoreEntitySet="Platforms">
+                <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+                <ScalarProperty Name="PlatformName" ColumnName="PlatformName" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="ConsoleType" ColumnName="ConsoleType" />
+                <ScalarProperty Name="ConsoleTypeId" ColumnName="ConsoleTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
