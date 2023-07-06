@@ -5,9 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9f903b931c554cbd933ece76655b5580" Name="Diagram1">
-        <EntityTypeShape EntityType="VideoGamesModel.ConsoleType" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VideoGamesModel.Platform" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="VideoGamesModel.FK__Platforms__Conso__5629CD9C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VideoGamesModel.ConsoleTypes" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="VideoGamesModel.Games" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="VideoGamesModel.Platforms" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="VideoGamesModel.FK__Platforms__Conso__628FA481" />
+        <AssociationConnector Association="VideoGamesModel.FK__Games__PlatformI__6FE99F9F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

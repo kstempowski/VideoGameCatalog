@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGameCatalog", "VideoGa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGameLibrary", "VideoGameLibrary\VideoGameLibrary.csproj", "{B34EF08D-BD3D-4191-8093-C91B7D0073B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationLibrary", "ApplicationLibrary\ApplicationLibrary.csproj", "{CAC4D18A-CE38-4FDC-8281-703EC2E45F04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B34EF08D-BD3D-4191-8093-C91B7D0073B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B34EF08D-BD3D-4191-8093-C91B7D0073B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B34EF08D-BD3D-4191-8093-C91B7D0073B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAC4D18A-CE38-4FDC-8281-703EC2E45F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAC4D18A-CE38-4FDC-8281-703EC2E45F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAC4D18A-CE38-4FDC-8281-703EC2E45F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAC4D18A-CE38-4FDC-8281-703EC2E45F04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

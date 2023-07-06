@@ -12,18 +12,22 @@ namespace VideoGameLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class ConsoleType
+    public partial class Platforms
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ConsoleType()
+        public Platforms()
         {
-            this.Platforms = new HashSet<Platform>();
+            this.Games = new HashSet<Games>();
         }
     
+        public int PlatformId { get; set; }
+        public string PlatformName { get; set; }
+        public string Brand { get; set; }
+        public string ConsoleType { get; set; }
         public int ConsoleTypeId { get; set; }
-        public string ConsoleType1 { get; set; }
     
+        public virtual ConsoleTypes ConsoleTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Platform> Platforms { get; set; }
+        public virtual ICollection<Games> Games { get; set; }
     }
 }

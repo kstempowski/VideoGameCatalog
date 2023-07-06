@@ -25,7 +25,8 @@ namespace VideoGameLibrary
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ConsoleType> ConsoleTypes { get; set; }
-        public virtual DbSet<Platform> Platforms { get; set; }
+        public virtual DbSet<ConsoleTypes> ConsoleTypes { get; set; }
+        public virtual DbSet<Games> Games { get; set; }
+        public virtual DbSet<Platforms> Platforms { get; set; }
     }
 }
